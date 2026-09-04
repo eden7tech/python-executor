@@ -1,0 +1,48 @@
+# Ambiente / segredos
+.env
+.env.*
+!.env.example
+
+# Configurações locais/sensíveis
+config.json
+*_config.json
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Ambientes virtuais
+.venv/
+venv/
+env/
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.bak
+*.swp
+*~
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+tmp/
+yaml/
+rebuild.sh
+
+# Docker
+docker_data/
+postgres_data/
+n8n_data/
+
+# Chaves e certificados
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx

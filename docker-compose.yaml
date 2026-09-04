@@ -1,0 +1,19 @@
+services:
+  python-executor:
+    image: eden7tech/python-executor:basic
+    container_name: python_executor_basic
+    restart: unless-stopped
+
+    ports:
+      - "8000:8000"
+
+    environment:
+      CONFIG_ENCRYPTION_KEY: ${CONFIG_ENCRYPTION_KEY}
+      MCP_SECRET_TOKEN: ${MCP_SECRET_TOKEN}
+
+    healthcheck:
+      test: ["CMD-SHELL", "python -c \"import urllib.request; urllib.request.urlopen('http://localhost:8000/health')\""]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

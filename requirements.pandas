@@ -1,0 +1,22 @@
+fastapi
+uvicorn
+
+pillow
+
+paramiko
+cryptography
+
+requests
+
+# Descomente quando precisar integrar com AWS S3
+# boto3
+
+numpy
+pandas
+#tensorflow-cpu
+#tflite-runtime
+#xgboost
+#networkx
+#pybgl
+#opencv-python-headless
+#moviepy
