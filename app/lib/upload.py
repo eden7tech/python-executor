@@ -316,3 +316,48 @@ def upload(
         conexao=conexao
 
     )
+
+def criar_diretorio(referencia, conexao):
+
+    ssh = None
+    sftp = None
+
+    try:
+        ssh = _connect(conexao)
+        sftp = ssh.open_sftp()
+
+        remoto = os.path.join(
+            conexao["remote_dir"],
+            referencia
+        ).replace("\\", "/")
+
+        try:
+            sftp.stat(remoto)
+
+            return {
+                "sucesso": True,
+                "criado": False,
+                "diretorio": remoto,
+                "mensagem": "Diretório já existe."
+            }
+
+        except IOError:
+            pass
+
+        sftp.mkdir(remoto)
+
+        return {
+            "sucesso": True,
+            "criado": True,
+            "diretorio": remoto,
+            "mensagem": "Diretório criado."
+        }
+
+    finally:
+
+        if sftp:
+            sftp.close()
+
+        if ssh:
+            ssh.close()
+
